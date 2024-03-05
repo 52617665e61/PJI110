@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} Adicionar pet encontrado {% endblock %}
+
+{% block content %}
+
+    <h1> Adicionar um pet encontrado</h1>
+
+    <p>Para cadastrar o animal encontrado em nosso sistema é fácil, basta preencher o formulário abaixo e enviar. Pronto ele estará cadastrado.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Encontrado">
+
+    </form>
+        
+
+{% endblock %}
