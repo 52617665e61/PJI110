@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.template import loader
 from .models import Perdido, Encontrado
 from .forms import PerdidoForm, EncontradoForm
+
 
 # Create your views here.
 
@@ -22,9 +25,11 @@ def listaEncontrados(request):
      encontrados = Encontrado.objects.all()
      return render(request, 'tasks/listaEncontrados.html', {'encontrados': encontrados})
 
+
 def encontrado(request):
     return render(request, 'tasks/encontrado.html')
 
+@login_required
 def addEncontrado(request):
     if request.method == 'POST':
         form = EncontradoForm(request.POST)
@@ -38,13 +43,14 @@ def addEncontrado(request):
 ##########################################################################################################################
 
 
-#VIES REFERENTES A ANIMAIS PERDIDOS 
+#VIEwS REFERENTES A ANIMAIS PERDIDOS 
     
 
 ##########################################################################################################################    
 def perdido(request):
     return render(request, 'tasks/perdido.html')
 
+@login_required
 def addPerdido(request):
     if request.method == 'POST':
         form = PerdidoForm(request.POST)
@@ -60,3 +66,4 @@ def listaPerdidos(request):
      return render(request, 'tasks/listaPerdidos.html', {'perdidos': perdidos})
 
 ##########################################################################################################################
+
