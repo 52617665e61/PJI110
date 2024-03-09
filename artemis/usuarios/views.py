@@ -20,7 +20,7 @@ def registroUsuario(request):
             senha = form.cleaned_data['password1']
             user = authenticate(username=usuario, password=senha)
             login(request, user)
-            return redirect('home')
+            return redirect('index')
     else:
         form = formularioRegistroUsuario()
 
