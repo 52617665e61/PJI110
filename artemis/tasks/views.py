@@ -11,7 +11,7 @@ from .forms import PerdidoForm, EncontradoForm
 
 
 def home(request):
-    return render(request, 'tasks/home.html')
+    return render(request, 'tasks/index.html')
 
 ##########################################################################################################################
 
